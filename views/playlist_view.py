@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import filedialog
+from PIL import Image, ImageTk
 from tkinter.ttk import Progressbar
 import customtkinter as ctk
 from mutagen.mp3 import MP3
@@ -23,7 +24,11 @@ class PlaylistApp:
         start_progress_thread(self.audio, self.update_progress)
 
     def setup_ui(self):
-        self.bg_image = tk.PhotoImage(file="assets/background.png").subsample(2)
+    # Load and resize the image using PIL to fit 450x450
+        bg_image = Image.open("assets/background.png")
+        resized_image = bg_image.resize((450, 450), Image.ANTIALIAS)
+        self.bg_image = ImageTk.PhotoImage(resized_image)
+
         self.bg_label = tk.Label(self.frame, image=self.bg_image, width=450, height=450)
         self.bg_label.place(x=0, y=0, width=450, height=450)
 
