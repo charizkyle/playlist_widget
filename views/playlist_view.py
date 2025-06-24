@@ -41,16 +41,16 @@ class PlaylistApp:
 
         # Audio Controls (centered along pink wave area)
         self.btn_prev = ctk.CTkButton(self.frame, text="⏮", command=self.prev_song, width=40, fg_color="#f0758a")
-        self.btn_prev.place(x=90, y=330)
+        self.btn_prev.place(x=110, y=330)
 
         self.btn_play = ctk.CTkButton(self.frame, text="▶️", command=self.play_music, width=40, fg_color="#f0758a")
-        self.btn_play.place(x=150, y=330)
+        self.btn_play.place(x=170, y=330)
 
         self.btn_pause = ctk.CTkButton(self.frame, text="⏸", command=self.pause_music, width=40, fg_color="#f0758a")
-        self.btn_pause.place(x=210, y=330)
+        self.btn_pause.place(x=230, y=330)
 
         self.btn_next = ctk.CTkButton(self.frame, text="⏭", command=self.next_song, width=40, fg_color="#f0758a")
-        self.btn_next.place(x=270, y=330)
+        self.btn_next.place(x=290, y=330)
 
         # Folder Button (at bottom pink box area)
         self.btn_select_folder = ctk.CTkButton(
