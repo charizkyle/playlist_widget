@@ -28,3 +28,7 @@ class PlaylistApp:
         self.song_title.place(relx=0, rely=40, anchor="n")
 
         self.btn_select_folder = ctk.CTkButton(self.frame, text="Select Folder", command=self.select_music_folder)
+        self.btn_select_folder.place(relx=0.5, rely=0.15, anchor="n")
+
+        self.song_listbox.place = tk.Listbox(self.frame, width=50, font=("Arial", 12))
+        self.song_listbox.place(relx=0.5, rely=0.25, anchor="n")
