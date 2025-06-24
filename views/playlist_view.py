@@ -48,3 +48,6 @@ class PlaylistApp:
             self.audio.resume()
         else:
             self.play_selected_song()
+
+    def pause_music(self):
+        self.audio.pause()
