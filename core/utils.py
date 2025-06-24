@@ -1,7 +1,7 @@
 import threading
 import time
 
-def start_progress_thread():
+def start_progress_thread(update_func, audio_player):
     def update_progress():
         while True:
             if not audio_player.paused:
