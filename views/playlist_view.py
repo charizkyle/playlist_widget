@@ -23,3 +23,5 @@ class PlaylistApp:
         self.bg_image = tk.PhotoImage(file="assets/background.png")
         self.bg_label = tk.Label(self.frame, image=self.bg_image)
         self.bg_label.place(x=0, y=0, relwidth=1, relheight=1)
+
+        self.song_title = tk.Label(self.frame, text="No song playing", font=("Arial", 16, "bold"), bg="white")
