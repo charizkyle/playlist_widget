@@ -109,6 +109,5 @@ class PlaylistApp:
 
     def update_progress(self):
         if self.current_song_path:
-            pos = self.audio.get_position()
-            self.pbar["value"] = pos
+            self.pbar["value"] = self.audio.get_position()
             self.frame.update_idletasks()
