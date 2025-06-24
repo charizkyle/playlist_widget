@@ -55,7 +55,7 @@ class PlaylistApp:
     def play_selected_song(self):
         if not self.song_listbox.curselection():
                 return
-            self.current_index = self.song_listbox.curselection()[0]
-            song_path = self.songs[self.current_index]
-            self.audio.play(song_path)
-            self.song_title_config(text=f"Now Playing: {os.path.basename(song_path)}")
+        self.current_index = self.song_listbox.curselection()[0]
+        song_path = self.songs[self.current_index]
+        self.audio.play(song_path)
+        self.song_title_config(text=f"Now Playing: {os.path.basename(song_path)}")
