@@ -3,6 +3,7 @@ import customtkinter as ctk
 import pygame
 import os
 from core.audio_player import AudioPlayer
+from core.utils import start_progress_thread
 
 class PlaylistApp:
     def __init__(self, master):
@@ -11,4 +12,8 @@ class PlaylistApp:
         self.audio = AudioPlayer()
         self.songs = []
         self.current_index = 0
+
+        self.setup_ui()
+        start_progress_thread(self.update_progress, self.audio)
+
         
