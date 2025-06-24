@@ -32,7 +32,7 @@ class PlaylistApp:
         self.bg_label.place(x=0, y=0, width=450, height=450)
 
         # Now Playing Label (top bar area)
-        self.song_title = tk.Label(self.frame, text="Now Playing:", font=("Consolas", 11, "bold"), bg="#f4aaff", fg="#bdf3ff", anchor="center", padx=10, width=30)
+        self.song_title = tk.Label(self.frame, text="Now Playing:", font=("Consolas", 11, "bold"), bg="#f4aaff", fg="#995edd", anchor="center", padx=10, width=30)
         self.song_title.place(x=90, y=100)
 
         # Progress bar (just below the display area)
