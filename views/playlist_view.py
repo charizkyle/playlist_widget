@@ -35,3 +35,7 @@ class PlaylistApp:
 
         self.pbar = Progressbar(self.frame, length=400, mode="determinate")
         self.pbar.place(relx=0.5, rely=0.68, anchor="n")
+
+        control_frame = tk.Frame(self.frame, bg="white")
+
+        ctk.CTkButton(control_frame, text="⏮", command=self.prev_song, width=50).grid(row=0, column=0, padx=5)
