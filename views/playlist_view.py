@@ -39,3 +39,4 @@ class PlaylistApp:
         control_frame = tk.Frame(self.frame, bg="white")
 
         ctk.CTkButton(control_frame, text="⏮", command=self.prev_song, width=50).grid(row=0, column=0, padx=5)
+        ctk.CTkButton(control_frame, text="▶️", command=self.play_music, width=50).grid(row=0, column=1, padx=5)
