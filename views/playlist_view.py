@@ -41,3 +41,10 @@ class PlaylistApp:
         ctk.CTkButton(control_frame, text="⏮", command=self.prev_song, width=50).grid(row=0, column=0, padx=5)
         ctk.CTkButton(control_frame, text="▶️", command=self.play_music, width=50).grid(row=0, column=1, padx=5)
         ctk.CTkButton(control_frame, text="⏸", command=self.pause_music, width=50).grid(row=0, column=2, padx=5)
+        ctk.CTkButton(control_frame, text="⏭", command=self.next_song, width=50).grid(row=0, column=3, padx=5)
+
+    def show(self):
+        if self.audio.paused:
+            self.audio.resume()
+        else:
+            self.play_selected_song()
