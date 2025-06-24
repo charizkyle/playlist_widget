@@ -40,21 +40,21 @@ class PlaylistApp:
         self.pbar.place(x=50, y=300)
 
         # Audio Controls (centered along pink wave area)
-        self.btn_prev = ctk.CTkButton(self.frame, text="⏮", command=self.prev_song, width=40, fg_color="#f0758a")
+        self.btn_prev = ctk.CTkButton(self.frame, text="⏮", command=self.prev_song, width=40, fg_color="#f0758a", hover_color = "#7834c4")
         self.btn_prev.place(x=110, y=330)
 
-        self.btn_play = ctk.CTkButton(self.frame, text="▶️", command=self.play_music, width=40, fg_color="#f0758a")
+        self.btn_play = ctk.CTkButton(self.frame, text="▶️", command=self.play_music, width=40, fg_color="#f0758a", hover_color = "#7834c4")
         self.btn_play.place(x=170, y=330)
 
-        self.btn_pause = ctk.CTkButton(self.frame, text="⏸", command=self.pause_music, width=40, fg_color="#f0758a")
+        self.btn_pause = ctk.CTkButton(self.frame, text="⏸", command=self.pause_music, width=40, fg_color="#f0758a", hover_color = "#7834c4")
         self.btn_pause.place(x=230, y=330)
 
-        self.btn_next = ctk.CTkButton(self.frame, text="⏭", command=self.next_song, width=40, fg_color="#f0758a")
+        self.btn_next = ctk.CTkButton(self.frame, text="⏭", command=self.next_song, width=40, fg_color="#f0758a", hover_color = "#7834c4")
         self.btn_next.place(x=290, y=330)
 
         # Folder Button (at bottom pink box area)
         self.btn_select_folder = ctk.CTkButton(
-        self.frame, text="🎵 Select Music Folder", command=self.select_music_folder, width=200, font=("Consolas", 12, "bold"))
+        self.frame, text="🎵 Select Music Folder", command=self.select_music_folder, width=200, font=("Consolas", 12, "bold"), fg_color = "#f0758a", hover_color = "#7834c4")
         self.btn_select_folder.place(x=120, y=370)
 
     def show(self):
