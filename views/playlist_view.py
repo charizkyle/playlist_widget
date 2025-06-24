@@ -37,6 +37,7 @@ class PlaylistApp:
 
         # Progress bar (just below the display area)
         self.pbar = Progressbar(self.frame, length=350, mode="determinate")
+        self.pbar["value"] = 0
         self.pbar.place(x=50, y=300)
 
         # Audio Controls (centered along pink wave area)
@@ -101,6 +102,7 @@ class PlaylistApp:
             self.current_index -= 1
             self.play_selected_song()
 
-    def update_progress(self):
-        if self.current_song_path:
-            self.pbar["value"] = self.audio.get_position()
+def update_progress(self):
+    if self.current_song_path:
+        self.pbar["value"] = self.audio.get_position()
+        self.frame.update_idletasks()
