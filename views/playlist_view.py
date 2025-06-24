@@ -37,7 +37,7 @@ class PlaylistApp:
 
         # Progress bar (just below the display area)
         self.pbar = Progressbar(self.frame, length=350, mode="determinate")
-        self.pbar.place(x=40, y=25)
+        self.pbar.place(x=90, y=300)
 
         # Audio Controls (centered along pink wave area)
         self.btn_prev = ctk.CTkButton(self.frame, text="⏮", command=self.prev_song, width=40, fg_color="#f0758a")
