@@ -31,44 +31,31 @@ class PlaylistApp:
         self.bg_label = tk.Label(self.frame, image=self.bg_image, width=450, height=450)
         self.bg_label.place(x=0, y=0, width=450, height=450)
 
-        self.song_title = tk.Label(
-            self.frame,
-            text="Now Playing: ",
-            font=("Consolas", 14, "bold"),
-            bg="#f4aaff",
-            fg="#000000",
-            anchor="w",
-            padx=10,
-            width=60
-        )
-        self.song_title.place(x=100, y=80)
+        # Now Playing Label (top bar area)
+        self.song_title = tk.Label(self.frame, text="Now Playing:", font=("Consolas", 12, "bold"), bg="#f4aaff", fg="#000000", anchor="w", padx=10, width=40)
+        self.song_title.place(x=40, y=25)
 
-        # Progress bar (placed between display and controls visually)
-        self.pbar = Progressbar(self.frame, length=400, mode="determinate")
-        self.pbar.place(x=100, y=430)
+        # Progress bar (just below the display area)
+        self.pbar = Progressbar(self.frame, length=350, mode="determinate")
+        self.pbar.place(x=50, y=260)
 
-        # Control Buttons (positioned at bottom frame area)
-        self.btn_prev = ctk.CTkButton(self.frame, text="⏮", command=self.prev_song, width=60, fg_color="#f0758a")
-        self.btn_prev.place(x=150, y=460)
+        # Audio Controls (centered along pink wave area)
+        self.btn_prev = ctk.CTkButton(self.frame, text="⏮", command=self.prev_song, width=40, fg_color="#f0758a")
+        self.btn_prev.place(x=90, y=300)
 
-        self.btn_play = ctk.CTkButton(self.frame, text="▶️", command=self.play_music, width=60, fg_color="#f0758a")
-        self.btn_play.place(x=230, y=460)
+        self.btn_play = ctk.CTkButton(self.frame, text="▶️", command=self.play_music, width=40, fg_color="#f0758a")
+        self.btn_play.place(x=150, y=300)
 
-        self.btn_pause = ctk.CTkButton(self.frame, text="⏸", command=self.pause_music, width=60, fg_color="#f0758a")
-        self.btn_pause.place(x=310, y=460)
+        self.btn_pause = ctk.CTkButton(self.frame, text="⏸", command=self.pause_music, width=40, fg_color="#f0758a")
+        self.btn_pause.place(x=210, y=300)
 
-        self.btn_next = ctk.CTkButton(self.frame, text="⏭", command=self.next_song, width=60, fg_color="#f0758a")
-        self.btn_next.place(x=390, y=460)
+        self.btn_next = ctk.CTkButton(self.frame, text="⏭", command=self.next_song, width=40, fg_color="#f0758a")
+        self.btn_next.place(x=270, y=300)
 
-        # Select Folder Button (moved below controls)
+        # Folder Button (at bottom pink box area)
         self.btn_select_folder = ctk.CTkButton(
-            self.frame,
-            text="🎵 Select Music Folder",
-            command=self.select_music_folder,
-            width=200,
-            font=("Arial", 14)
-        )
-        self.btn_select_folder.place(x=200, y=520)
+        self.frame, text="🎵 Select Music Folder", command=self.select_music_folder, width=200, font=("Arial", 12))
+        self.btn_select_folder.place(x=120, y=360)
 
     def show(self):
         self.frame.pack(fill="both", expand=True)
