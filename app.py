@@ -4,7 +4,7 @@ from views.playlist_view import PlaylistApp
 class MusicPlayerApp:
     def __init__(self):
         self.window = tk.Tk()
-        self.window.title("🎶 Playlist Widget")
+        self.window.title("🎶 Playlist Widget Music Player")
         width = 450
         height = 450
         self.window.geometry(f"{width}x{height}")
