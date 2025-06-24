@@ -1,4 +1,3 @@
-````markdown
 # 🎵 Playlist Widget Music Player
 
 A retro-pixel-themed Python music player app built with Tkinter and Pygame — featuring a custom-designed background, interactive audio controls, and a fully functional progress bar!
