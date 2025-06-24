@@ -54,8 +54,8 @@ class PlaylistApp:
 
         # Folder Button (at bottom pink box area)
         self.btn_select_folder = ctk.CTkButton(
-        self.frame, text="🎵 Select Music Folder", command=self.select_music_folder, width=200, font=("Arial", 12))
-        self.btn_select_folder.place(x=120, y=360)
+        self.frame, text="🎵 Select Music Folder", command=self.select_music_folder, width=200, font=("Consolas", 12, "bold"))
+        self.btn_select_folder.place(x=120, y=370)
 
     def show(self):
         self.frame.pack(fill="both", expand=True)
