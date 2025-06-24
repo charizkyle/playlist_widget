@@ -25,3 +25,6 @@ class PlaylistApp:
         self.bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 
         self.song_title = tk.Label(self.frame, text="No song playing", font=("Arial", 16, "bold"), bg="white")
+        self.song_title.place(relx=0, rely=40, anchor="n")
+
+        self.btn_select_folder = ctk.CTkButton(self.frame, text="Select Folder", command=self.select_music_folder)
