@@ -25,7 +25,7 @@ class PlaylistApp:
 
     def setup_ui(self):
     # Load and resize the image using PIL to fit 450x450
-        bg_image = Image.open("assets/background.png")
+        bg_image = Image.open("assets/bg.png")
         resized_image = bg_image.resize((450, 450))
         self.bg_image = ImageTk.PhotoImage(resized_image)
         self.bg_label = tk.Label(self.frame, image=self.bg_image, width=450, height=450)
