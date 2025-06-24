@@ -12,6 +12,7 @@ A retro-pixel-themed Python music player app built with Tkinter and Pygame — f
 ## 🖼️ Preview
 
 ![UI Screenshot](assets/preview.png)
+![Playlist Widget](assets/vid_preview.mp4)
 
 ---
 
