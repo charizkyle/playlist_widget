@@ -23,3 +23,6 @@ class AudioPlayer:
         pygame.mixer.music.stop()
         self._paused = False
         self._current_position = 0
+
+    def get_position(self):
+        return pygame.mixer.music.get_pos() / 1000  # Convert milliseconds to seconds
