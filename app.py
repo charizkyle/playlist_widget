@@ -11,9 +11,9 @@ class MusicPlayerApp:
         self.window.resizable(False, False)
         screen_width = self.window.winfo_screenwidth()
         screen_height = self.window.winfo_screenheight()
-        x = (screen_width // 2) - (width // 2)
-        y = (screen_height // 2) - (height // 2)
-        self.window.geometry(f"{width}x{height}+{x}+{y}")
+        position_x = (screen_width // 2) - (width // 2)
+        position_y = (screen_height // 2) - (height // 2)
+        self.window.geometry(f"{width}x{height}+{position_x}+{position_y}")
 
         self.view = PlaylistApp(self.window)
         self.view.show()
