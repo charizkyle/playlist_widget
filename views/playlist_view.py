@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import ttk
 from tkinter import filedialog
 from PIL import Image, ImageTk
 from tkinter.ttk import Progressbar
@@ -6,6 +7,7 @@ import customtkinter as ctk
 from mutagen.mp3 import MP3
 import pygame
 import os
+import time
 from core.audio_player import AudioPlayer
 from core.utils import start_progress_thread
 
@@ -36,9 +38,14 @@ class PlaylistApp:
         self.song_title.place(x=90, y=100)
 
         # Progress bar (just below the display area)
-        self.pbar = Progressbar(self.frame, length=350, mode="determinate")
+        self.pbar = Progressbar(self.frame, length=350, mode="determinate", style="TProgressbar")
         self.pbar["value"] = 0
         self.pbar.place(x=50, y=300)
+        self.pbar.bind("<Button-1>", self.seek_music)
+
+        style = ttk.Style()
+        style.theme_use('default')
+        style.configure("TProgressbar", troughcolor='#ffeaf5', background='#f0758a', thickness=10)
 
         # Audio Controls (centered along pink wave area)
         self.btn_prev = ctk.CTkButton(self.frame, text="⏮", command=self.prev_song, width=40, fg_color="#f0758a", hover_color = "#7834c4")
@@ -111,3 +118,17 @@ class PlaylistApp:
         if self.current_song_path:
             self.pbar["value"] = self.audio.get_position()
             self.frame.update_idletasks()
+
+    def seek_music(self, event):
+        if not self.current_song_path:
+            return
+
+        bar_length = self.pbar.winfo_width()
+        click_position = event.x
+        click_ratio = click_position / bar_length
+
+        audio = MP3(self.current_song_path)
+        new_time = audio.info.length * click_ratio
+
+        pygame.mixer.music.play(start=new_time)
+        self.audio._start_time = time.time() - new_time
