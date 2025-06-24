@@ -102,7 +102,7 @@ class PlaylistApp:
             self.current_index -= 1
             self.play_selected_song()
 
-def update_progress(self):
-    if self.current_song_path:
-        self.pbar["value"] = self.audio.get_position()
-        self.frame.update_idletasks()
+    def update_progress(self):
+        if self.current_song_path:
+            self.pbar["value"] = self.audio.get_position()
+            self.frame.update_idletasks()
