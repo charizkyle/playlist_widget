@@ -17,6 +17,7 @@ class PlaylistApp:
         self.audio = AudioPlayer()
         self.songs = []
         self.current_index = 0
+        self.current_song_path = ""
 
         self.setup_ui()
         start_progress_thread(self.audio, self.update_progress)
@@ -26,25 +27,45 @@ class PlaylistApp:
         self.bg_label = tk.Label(self.frame, image=self.bg_image)
         self.bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 
-        self.song_title = tk.Label(self.frame, text="No song playing", font=("Arial", 16, "bold"), bg="#ffffff")
-        self.song_title.place(relx=0.5, y=40, anchor="n")
+        # Now Playing Label (in top bar)
+        self.song_title = tk.Label(
+            self.frame,
+            text="Now Playing: ",
+            font=("Consolas", 14, "bold"),
+            bg="#f4aaff",
+            fg="#000000",
+            anchor="w",
+            padx=10,
+            width=60
+        )
+        self.song_title.place(x=100, y=80)
 
-        self.btn_select_folder = ctk.CTkButton(self.frame, text="🎵 Select Folder", command=self.select_music_folder)
-        self.btn_select_folder.place(relx=0.5, rely=0.15, anchor="n")
-
-        self.song_listbox = tk.Listbox(self.frame, width=50, font=("Arial", 14))
-        self.song_listbox.place(relx=0.5, rely=0.25, anchor="n")
-
+        # Progress bar (placed between display and controls visually)
         self.pbar = Progressbar(self.frame, length=400, mode="determinate")
-        self.pbar.place(relx=0.5, rely=0.68, anchor="n")
+        self.pbar.place(x=100, y=430)
 
-        control_frame = tk.Frame(self.frame, bg="#ffffff")
-        control_frame.place(relx=0.5, rely=0.75, anchor="n")
+        # Control Buttons (positioned at bottom frame area)
+        self.btn_prev = ctk.CTkButton(self.frame, text="⏮", command=self.prev_song, width=60, fg_color="#f0758a")
+        self.btn_prev.place(x=150, y=460)
 
-        ctk.CTkButton(control_frame, text="⏮", command=self.prev_song, width=50).grid(row=0, column=0, padx=5)
-        ctk.CTkButton(control_frame, text="▶️", command=self.play_music, width=50).grid(row=0, column=1, padx=5)
-        ctk.CTkButton(control_frame, text="⏸", command=self.pause_music, width=50).grid(row=0, column=2, padx=5)
-        ctk.CTkButton(control_frame, text="⏭", command=self.next_song, width=50).grid(row=0, column=3, padx=5)
+        self.btn_play = ctk.CTkButton(self.frame, text="▶️", command=self.play_music, width=60, fg_color="#f0758a")
+        self.btn_play.place(x=230, y=460)
+
+        self.btn_pause = ctk.CTkButton(self.frame, text="⏸", command=self.pause_music, width=60, fg_color="#f0758a")
+        self.btn_pause.place(x=310, y=460)
+
+        self.btn_next = ctk.CTkButton(self.frame, text="⏭", command=self.next_song, width=60, fg_color="#f0758a")
+        self.btn_next.place(x=390, y=460)
+
+        # Select Folder Button (moved below controls)
+        self.btn_select_folder = ctk.CTkButton(
+            self.frame,
+            text="🎵 Select Music Folder",
+            command=self.select_music_folder,
+            width=200,
+            font=("Arial", 14)
+        )
+        self.btn_select_folder.place(x=200, y=520)
 
     def show(self):
         self.frame.pack(fill="both", expand=True)
@@ -53,11 +74,12 @@ class PlaylistApp:
         path = filedialog.askdirectory()
         if path:
             self.songs.clear()
-            self.song_listbox.delete(0, tk.END)
             for file in os.listdir(path):
                 if file.endswith(".mp3"):
                     self.songs.append(os.path.join(path, file))
-                    self.song_listbox.insert(tk.END, file)
+            if self.songs:
+                self.current_index = 0
+                self.play_selected_song()
 
     def play_music(self):
         if self.audio.paused:
@@ -69,10 +91,10 @@ class PlaylistApp:
         self.audio.pause()
 
     def play_selected_song(self):
-        if not self.song_listbox.curselection():
+        if not self.songs:
             return
-        self.current_index = self.song_listbox.curselection()[0]
         song_path = self.songs[self.current_index]
+        self.current_song_path = song_path
         self.audio.play(song_path)
         self.song_title.config(text=f"Now Playing: {os.path.basename(song_path)}")
 
@@ -82,16 +104,13 @@ class PlaylistApp:
     def next_song(self):
         if self.current_index < len(self.songs) - 1:
             self.current_index += 1
-            self.song_listbox.select_clear(0, tk.END)
-            self.song_listbox.select_set(self.current_index)
             self.play_selected_song()
 
     def prev_song(self):
         if self.current_index > 0:
             self.current_index -= 1
-            self.song_listbox.select_clear(0, tk.END)
-            self.song_listbox.select_set(self.current_index)
             self.play_selected_song()
 
     def update_progress(self):
-        self.pbar["value"] = self.audio.get_position()
+        if self.current_song_path:
+            self.pbar["value"] = self.audio.get_position()
