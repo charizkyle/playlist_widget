@@ -32,3 +32,6 @@ class PlaylistApp:
 
         self.song_listbox.place = tk.Listbox(self.frame, width=50, font=("Arial", 12))
         self.song_listbox.place(relx=0.5, rely=0.25, anchor="n")
+
+        self.pbar = Progressbar(self.frame, length=400, mode="determinate")
+        self.pbar.place(relx=0.5, rely=0.68, anchor="n")
