@@ -4,9 +4,16 @@ from views.playlist_view import PlaylistApp
 class MusicPlayerApp:
     def __init__(self):
         self.window = tk.Tk()
-        self.window.title("🎶 Music Player")
-        self.window.geometry("768x768")
+        self.window.title("🎶 Playlist Widget")
+        width = 450
+        height = 450
+        self.window.geometry(f"{width}x{height}")
         self.window.resizable(False, False)
+        screen_width = self.window.winfo_screenwidth()
+        screen_height = self.window.winfo_screenheight()
+        x = (screen_width // 2) - (width // 2)
+        y = (screen_height // 2) - (height // 2)
+        self.window.geometry(f"{width}x{height}+{x}+{y}")
 
         self.view = PlaylistApp(self.window)
         self.view.show()

@@ -23,11 +23,10 @@ class PlaylistApp:
         start_progress_thread(self.audio, self.update_progress)
 
     def setup_ui(self):
-        self.bg_image = tk.PhotoImage(file="assets/background.png")
-        self.bg_label = tk.Label(self.frame, image=self.bg_image)
-        self.bg_label.place(x=0, y=0, relwidth=1, relheight=1)
+        self.bg_image = tk.PhotoImage(file="assets/background.png").subsample(2)
+        self.bg_label = tk.Label(self.frame, image=self.bg_image, width=450, height=450)
+        self.bg_label.place(x=0, y=0, width=450, height=450)
 
-        # Now Playing Label (in top bar)
         self.song_title = tk.Label(
             self.frame,
             text="Now Playing: ",
