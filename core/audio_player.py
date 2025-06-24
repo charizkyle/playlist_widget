@@ -10,3 +10,7 @@ class AudioPlayer:
         pygame.mixer.music.play()
         self.paused = False
         self.current_position = 0
+
+    def pause(self):
+        pygame.mixer.music.pause()
+        self.paused = True
