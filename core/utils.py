@@ -8,5 +8,6 @@ def start_progress_thread(update_func, audio_player):
                 update_func()
             time.sleep(0.1)
 
-    progress_thread = threading.Thread(target=update_progress, daemon=True)
-    progress_thread.start()
+    thread = threading.Thread(target=update_progress)
+    thread.daemon = True
+    thread.start()

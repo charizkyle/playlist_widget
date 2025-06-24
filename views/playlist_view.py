@@ -89,8 +89,13 @@ class PlaylistApp:
         self.audio.play(song_path)
         self.song_title.config(text=f"Now Playing: {os.path.basename(song_path)}")
 
-        audio = MP3(song_path)
-        self.pbar["maximum"] = audio.info.length
+        try:
+            audio = MP3(song_path)
+            self.pbar["maximum"] = audio.info.length
+            self.pbar["value"] = 0
+        except Exception as e:
+            print(f"Error loading song metadata: {e}")
+            self.pbar["maximum"] = 100
 
     def next_song(self):
         if self.current_index < len(self.songs) - 1:
@@ -104,5 +109,6 @@ class PlaylistApp:
 
     def update_progress(self):
         if self.current_song_path:
-            self.pbar["value"] = self.audio.get_position()
+            pos = self.audio.get_position()
+            self.pbar["value"] = pos
             self.frame.update_idletasks()
