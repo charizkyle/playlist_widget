@@ -32,12 +32,12 @@ class PlaylistApp:
         self.bg_label.place(x=0, y=0, width=450, height=450)
 
         # Now Playing Label (top bar area)
-        self.song_title = tk.Label(self.frame, text="Now Playing:", font=("Consolas", 12, "bold"), bg="#f4aaff", fg="#000000", anchor="w", padx=10, width=40)
-        self.song_title.place(x=40, y=25)
+        self.song_title = tk.Label(self.frame, text="Now Playing:", font=("Consolas", 11, "bold"), bg="#f4aaff", fg="#bdf3ff", anchor="center", padx=10, width=30)
+        self.song_title.place(x=90, y=100)
 
         # Progress bar (just below the display area)
         self.pbar = Progressbar(self.frame, length=350, mode="determinate")
-        self.pbar.place(x=50, y=260)
+        self.pbar.place(x=40, y=25)
 
         # Audio Controls (centered along pink wave area)
         self.btn_prev = ctk.CTkButton(self.frame, text="⏮", command=self.prev_song, width=40, fg_color="#f0758a")
